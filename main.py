@@ -11,8 +11,9 @@ images = []
 
 # Iterate over images in /images folder
 # Add the image to images list
-for image_file in os.listdir(images_folder):
+for image_file in sorted(os.listdir(images_folder)):
     if image_file.endswith(".HEIC"):
+        print('processing', image_file)
         heif_file = pyheif.read(images_folder/image_file)
 
         image = Image.frombytes(
@@ -34,3 +35,5 @@ for count, element in enumerate(images):
             element.save('images.pdf', save_all=True, append_images=images)
     else:
         break
+
+print('PDF is now ready')
