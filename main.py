@@ -32,7 +32,7 @@ for count, element in enumerate(images):
         if len(images) == 1: # If only one image
             element.save('image.pdf', 'PDF')
         else: # Else, there are multiple images
-            element.save('images.pdf', save_all=True, append_images=images)
+            element.save('images.pdf', save_all=True, append_images=images[1:])
     else:
         break
 
