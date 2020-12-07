@@ -9,8 +9,13 @@ images_folder = Path("images/")
 # List of image objects
 images = []
 
+# Image new size
+# size = width, height
+# Feel free to change the numerators and denominators to suit your needs
+img_new_size = 3024//6, 4032//6
+
 # Iterate over images in /images folder
-# Add the image to images list
+# Resize the image and then add it to the images list
 for image_file in sorted(os.listdir(images_folder)):
     if image_file.endswith(".HEIC"):
         print('processing', image_file)
@@ -25,6 +30,7 @@ for image_file in sorted(os.listdir(images_folder)):
             heif_file.stride,
             )
 
+        image.thumbnail(img_new_size)
         images.append(image)
 
 for count, element in enumerate(images):
